@@ -1,0 +1,1105 @@
+<html lang="zh-CN"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes">
+  <title>李林 · 影视制片人 / 后期总监</title>
+  <style>
+    :root {
+      --bg-deep:     #080c14;
+      --bg-card:     #0f1624;
+      --bg-card2:    #141d2f;
+      --accent:      #e8a045;
+      --accent2:     #f5c76b;
+      --accent-glow: rgba(232,160,69,.25);
+      --cyan:        #38d9e8;
+      --purple:      #a78bfa;
+      --text-main:   #e8eaf0;
+      --text-sub:    #8896aa;
+      --text-dim:    #4a5568;
+      --border:      rgba(255,255,255,.07);
+      --radius:      16px;
+      --radius-sm:   10px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans SC',sans-serif;background:var(--bg-deep);color:var(--text-main);line-height:1.7;overflow-x:hidden}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    ::-webkit-scrollbar{width:6px}
+    ::-webkit-scrollbar-track{background:var(--bg-deep)}
+    ::-webkit-scrollbar-thumb{background:var(--accent);border-radius:3px}
+
+    /* ── Nav ── */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 6vw;backdrop-filter:blur(20px);background:rgba(8,12,20,.8);border-bottom:1px solid var(--border)}
+    .nav-logo{font-size:1.05rem;font-weight:700;letter-spacing:2px;color:var(--accent);text-transform:uppercase}
+    .nav-links{display:flex;gap:28px}
+    .nav-links a{font-size:.82rem;font-weight:500;color:var(--text-sub);letter-spacing:1px;text-transform:uppercase;transition:color .25s}
+    .nav-links a:hover{color:var(--accent)}
+
+    /* ── Hero ── */
+    #hero{min-height:100vh;display:flex;align-items:center;padding:120px 6vw 80px;position:relative;overflow:hidden}
+    .hero-bg{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 55% 60% at 70% 50%,rgba(232,160,69,.13) 0%,transparent 70%),radial-gradient(ellipse 40% 60% at 10% 80%,rgba(56,217,232,.07) 0%,transparent 60%),linear-gradient(160deg,#080c14 0%,#0f1624 100%)}
+    .hero-bg::after{content:'';position:absolute;right:0;top:0;bottom:0;width:45%;background:repeating-linear-gradient(0deg,transparent 0px,transparent 28px,rgba(255,255,255,.025) 28px,rgba(255,255,255,.025) 30px),linear-gradient(90deg,transparent 0%,rgba(56,217,232,.04) 100%)}
+    .hero-content{position:relative;z-index:1;max-width:580px}
+    .hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:20px;border:1px solid var(--accent);color:var(--accent);font-size:.72rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:24px}
+    .hero-badge .dot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 1.5s ease-in-out infinite}
+    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
+    .hero-name{font-size:clamp(3.2rem,8vw,5.5rem);font-weight:900;line-height:1.05;letter-spacing:-2px;margin-bottom:12px}
+    .hero-name span{background:linear-gradient(135deg,var(--accent) 0%,var(--accent2) 50%,var(--cyan) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .hero-title{font-size:clamp(.95rem,2.2vw,1.2rem);color:var(--text-sub);font-weight:300;letter-spacing:3px;text-transform:uppercase;margin-bottom:28px}
+    .hero-desc{font-size:.95rem;color:var(--text-sub);max-width:480px;line-height:1.8;margin-bottom:36px}
+
+    /* Stats row */
+    .hero-stats{display:flex;gap:32px;margin-bottom:36px;flex-wrap:wrap}
+    .stat-item{text-align:left;position:relative}
+    .stat-num{font-size:2rem;font-weight:900;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block;line-height:1}
+    .stat-label{font-size:.72rem;color:var(--text-sub);letter-spacing:1px;text-transform:uppercase;margin-top:4px}
+    .stat-divider{width:1px;height:40px;background:rgba(255,255,255,.1);align-self:center}
+
+    /* Team photo mini-card in hero */
+    .hero-team-card{display:flex;align-items:center;gap:14px;padding:14px 18px;border-radius:var(--radius-sm);background:rgba(15,22,36,.85);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(10px);margin-bottom:36px;max-width:420px;transition:border-color .3s;cursor:pointer}
+    .hero-team-card:hover{border-color:rgba(232,160,69,.35)}
+    .hero-team-img{width:72px;height:72px;border-radius:10px;object-fit:cover;flex-shrink:0;border:1px solid rgba(232,160,69,.25)}
+    .hero-team-text{}
+    .hero-team-text strong{display:block;font-size:.88rem;color:var(--text-main);font-weight:700;margin-bottom:3px}
+    .hero-team-text span{font-size:.76rem;color:var(--text-sub);line-height:1.5}
+
+    .hero-cta{display:flex;gap:16px;flex-wrap:wrap}
+    .btn-primary{padding:13px 30px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#c07730);color:#000;font-weight:700;font-size:.88rem;letter-spacing:.5px;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 24px var(--accent-glow)}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px var(--accent-glow)}
+    .btn-outline{padding:13px 30px;border-radius:8px;border:1px solid var(--border);color:var(--text-main);font-weight:500;font-size:.88rem;letter-spacing:.5px;transition:border-color .2s,color .2s}
+    .btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+
+    /* ── Hero chips (RIGHT side) ── */
+    .hero-chips{position:absolute;right:5vw;top:50%;transform:translateY(-50%);z-index:1;display:flex;flex-direction:column;gap:18px;width:280px}
+    .chip{display:flex;align-items:flex-start;gap:14px;padding:22px 24px;border-radius:14px;background:rgba(15,22,36,.9);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(12px);transition:border-color .3s,transform .3s;animation:floatY 4s ease-in-out infinite}
+    .chip:hover{border-color:rgba(232,160,69,.45);transform:translateY(-4px)}
+    .chip:nth-child(2){animation-delay:-1.4s}
+    .chip:nth-child(3){animation-delay:-2.8s}
+    @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+    .chip-icon{font-size:1.9rem;flex-shrink:0;margin-top:2px}
+    .chip-text{}
+    .chip-text strong{display:block;font-size:1.05rem;color:var(--text-main);font-weight:700;margin-bottom:5px}
+    .chip-text span{font-size:.82rem;color:var(--text-sub);line-height:1.5}
+
+    .scroll-down{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--text-dim);font-size:.68rem;letter-spacing:2px;text-transform:uppercase;animation:floatY 2.5s ease-in-out infinite}
+    .scroll-arrow{width:18px;height:18px;border-right:2px solid var(--text-dim);border-bottom:2px solid var(--text-dim);transform:rotate(45deg)}
+
+    /* ── Section base ── */
+    section{padding:96px 6vw}
+    .section-label{font-size:.68rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+    .section-title{font-size:clamp(1.7rem,4vw,2.6rem);font-weight:800;line-height:1.2;margin-bottom:14px}
+    .section-sub{font-size:.97rem;color:var(--text-sub);max-width:540px;margin-bottom:52px}
+    .divider{width:48px;height:3px;background:linear-gradient(90deg,var(--accent),var(--cyan));border-radius:2px;margin-bottom:44px}
+
+    /* ── About ── */
+    #about{background:var(--bg-card)}
+    .about-grid{display:grid;grid-template-columns:1fr 1.35fr;gap:60px;align-items:start}
+    .about-img-wrap{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:3/4;max-height:520px;cursor:pointer;transition:transform .3s}
+    .about-img-wrap:hover{transform:scale(1.02)}
+    .about-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:top center}
+    .about-img-wrap::after{content:'';position:absolute;inset:0;border:1px solid rgba(232,160,69,.3);border-radius:var(--radius);pointer-events:none}
+    .frame-corner{position:absolute;width:28px;height:28px;border-color:var(--accent);border-style:solid}
+    .frame-corner.tl{top:12px;left:12px;border-width:2px 0 0 2px}
+    .frame-corner.tr{top:12px;right:12px;border-width:2px 2px 0 0}
+    .frame-corner.bl{bottom:12px;left:12px;border-width:0 0 2px 2px}
+    .frame-corner.br{bottom:12px;right:12px;border-width:0 2px 2px 0}
+    .about-text h3{font-size:1.45rem;font-weight:700;margin-bottom:20px}
+    .about-text p{color:var(--text-sub);margin-bottom:18px;font-size:.93rem;line-height:1.85}
+    .tag-list{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
+    .tag{padding:5px 13px;border-radius:20px;background:rgba(232,160,69,.1);border:1px solid rgba(232,160,69,.25);color:var(--accent);font-size:.76rem;font-weight:600}
+    .tag.cyan{background:rgba(56,217,232,.08);border-color:rgba(56,217,232,.2);color:var(--cyan)}
+    .tag.purple{background:rgba(167,139,250,.08);border-color:rgba(167,139,250,.2);color:var(--purple)}
+
+    /* ── Skills ── */
+    #skills{background:var(--bg-deep)}
+    .skills-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+    .skill-card{padding:22px;border-radius:var(--radius);background:var(--bg-card);border:1px solid var(--border);transition:border-color .25s,transform .25s}
+    .skill-card:hover{border-color:rgba(232,160,69,.35);transform:translateY(-4px)}
+    .skill-card-icon{font-size:2rem;margin-bottom:12px}
+    .skill-card h4{font-size:1rem;font-weight:700;margin-bottom:6px}
+    .skill-card p{font-size:.84rem;color:var(--text-sub);line-height:1.5;margin-bottom:12px}
+    .skill-bar-wrap{margin-top:10px}
+    .skill-bar-label{display:flex;justify-content:space-between;font-size:.76rem;color:var(--text-sub);margin-bottom:5px}
+    .skill-bar{height:4px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden}
+    .skill-bar-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--accent),var(--cyan));transition:width 1.2s cubic-bezier(.4,0,.2,1)}
+
+    /* ── Experience ── */
+    #experience{background:var(--bg-card)}
+    .exp-timeline{position:relative;padding-left:32px}
+    .exp-timeline::before{content:'';position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--accent),var(--cyan),transparent)}
+    .exp-item{position:relative;margin-bottom:52px}
+    .exp-item:last-child{margin-bottom:0}
+    .exp-dot{position:absolute;left:-29px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid var(--bg-card);box-shadow:0 0 12px var(--accent-glow)}
+    .exp-item.dim .exp-dot{background:var(--text-dim);box-shadow:none}
+    .exp-item.edu .exp-dot{background:var(--purple);border-color:var(--bg-card);box-shadow:0 0 12px rgba(167,139,250,.25)}
+    .exp-header{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:8px}
+    .exp-company{font-size:1.08rem;font-weight:700}
+    .exp-role{font-size:.78rem;font-weight:600;color:var(--accent);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
+    .exp-item.edu .exp-role{color:var(--purple)}
+    .exp-date{font-size:.76rem;color:var(--text-dim);font-weight:500;padding:3px 10px;border-radius:12px;background:rgba(255,255,255,.05);white-space:nowrap}
+    .exp-tag{display:inline-block;font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:4px;margin-left:8px;vertical-align:middle}
+    .exp-tag.current{background:linear-gradient(135deg,#22c55e,#15803d);color:#fff}
+    .exp-tag.intern{background:linear-gradient(135deg,#3b82f6,#1d4ed8);color:#fff}
+    .exp-tag.uni{background:linear-gradient(135deg,var(--purple),#6d28d9);color:#fff}
+    /* skill title tag */
+    .skill-tag{display:inline-block;font-size:.62rem;font-weight:700;padding:2px 8px;border-radius:4px;margin-left:8px;vertical-align:middle;background:linear-gradient(135deg,var(--cyan),#0ea5e9);color:#fff}
+    /* works expand */
+    .works-expand-btn{display:flex;align-items:center;justify-content:center;gap:10px;margin:36px auto 0;padding:14px 36px;border-radius:10px;background:var(--bg-card2);border:1px solid var(--border);color:var(--text-main);font-size:.9rem;font-weight:600;cursor:pointer;transition:border-color .25s,background .25s}
+    .works-expand-btn:hover{border-color:var(--accent);background:rgba(232,160,69,.08)}
+    .works-expand-btn .expand-icon{display:inline-block;transition:transform .3s}
+    .works-expand-btn.expanded .expand-icon{transform:rotate(180deg)}
+    .works-expanded{display:none;margin-top:28px;animation:fadeIn .4s ease}
+    .works-expanded.active{display:grid}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+    .exp-list{margin:10px 0 0 0;list-style:none}
+    .exp-list li{padding:5px 0;font-size:.87rem;color:var(--text-sub);display:flex;align-items:flex-start;gap:9px}
+    .exp-list li::before{content:'▸';color:var(--accent);flex-shrink:0;margin-top:1px}
+    .exp-item.edu .exp-list li::before{color:var(--purple)}
+    .exp-highlight{display:inline-flex;align-items:center;gap:6px;margin-top:12px;padding:7px 15px;border-radius:8px;background:rgba(232,160,69,.08);border:1px solid rgba(232,160,69,.2);font-size:.8rem;color:var(--accent);font-weight:600}
+    .exp-item.edu .exp-highlight{background:rgba(167,139,250,.08);border-color:rgba(167,139,250,.2);color:var(--purple)}
+
+    /* ── Works / Portfolio ── */
+    #works{background:var(--bg-deep)}
+    .posters-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+    .poster-card{position:relative;border-radius:var(--radius);overflow:hidden;background:var(--bg-card);border:1px solid var(--border);transition:all .3s;cursor:pointer;display:flex;flex-direction:column}
+    .poster-card:hover{transform:translateY(-6px) scale(1.02);border-color:rgba(232,160,69,.45);box-shadow:0 16px 40px rgba(0,0,0,.5)}
+    .poster-img-wrap{position:relative;overflow:hidden}
+    .poster-img-wrap img{width:100%;height:auto;display:block;transition:transform .4s}
+    .poster-card:hover .poster-img-wrap img{transform:scale(1.04)}
+    .poster-info{padding:14px 16px 16px;background:var(--bg-card2);flex-shrink:0;border-top:1px solid var(--border)}
+    .poster-title{font-size:.85rem;font-weight:700;color:#fff;margin-bottom:6px;line-height:1.35}
+    .poster-badge{display:inline-block;font-size:.65rem;font-weight:700;padding:2px 7px;border-radius:4px;background:linear-gradient(135deg,#e8a045,#c07730);color:#000;margin-bottom:6px;width:fit-content}
+    .poster-badge.hot{background:linear-gradient(135deg,#ef4444,#b91c1c);color:#fff}
+    .poster-badge.mega{background:linear-gradient(135deg,#a855f7,#7c3aed);color:#fff}
+    .poster-stat{font-size:.75rem;color:var(--text-sub);line-height:1.6}
+    .poster-stat strong{color:var(--accent2)}
+
+    /* ── Lightbox ── */
+    .lightbox{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;flex-direction:column;padding:40px;opacity:0;transition:opacity .3s}
+    .lightbox.active{display:flex;opacity:1}
+    .lightbox-img{max-width:90vw;max-height:80vh;object-fit:contain;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+    .lightbox-close{position:absolute;top:24px;right:24px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:1.5rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s}
+    .lightbox-close:hover{background:rgba(232,160,69,.3);border-color:var(--accent)}
+    .lightbox-caption{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);color:var(--text-sub);font-size:.9rem;text-align:center;max-width:80vw}
+
+    /* ── Contact ── */
+    #contact{background:var(--bg-card)}
+    .contact-wrap{max-width:720px;margin:0 auto;text-align:center}
+    .contact-cards{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:44px}
+    .contact-card{display:flex;align-items:center;gap:14px;padding:18px 26px;border-radius:var(--radius-sm);background:var(--bg-deep);border:1px solid var(--border);min-width:210px;transition:border-color .25s;cursor:pointer}
+    .contact-card:hover{border-color:var(--accent)}
+    .contact-card-icon{font-size:1.7rem;transition:transform .2s}
+    .contact-card:hover .contact-card-icon{transform:scale(1.15)}
+    .contact-card-text{text-align:left}
+    .contact-card-label{font-size:.7rem;color:var(--text-sub);text-transform:uppercase;letter-spacing:1px}
+    .contact-card-val{font-size:.9rem;font-weight:600;color:var(--text-main)}
+    .contact-cta-wrap{margin-top:52px}
+    .contact-cta-wrap h3{font-size:1.55rem;font-weight:700;margin-bottom:8px}
+    .contact-cta-wrap p{color:var(--text-sub);margin-bottom:28px;font-size:.93rem}
+
+    /* ── Footer ── */
+    footer{text-align:center;padding:28px 6vw;border-top:1px solid var(--border);font-size:.78rem;color:var(--text-dim)}
+    footer span{color:var(--accent)}
+
+    /* ── Reveal animation ── */
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s}
+    .reveal.visible{opacity:1;transform:none}
+    .reveal-delay-1{transition-delay:.1s}
+    .reveal-delay-2{transition-delay:.2s}
+    .reveal-delay-3{transition-delay:.3s}
+
+    /* ── Hero name tooltip ── */
+    .hero-name{position:relative;cursor:pointer}
+    .hero-name-tooltip{position:absolute;top:50%;left:calc(100% + 14px);z-index:10;width:260px;padding:16px 20px;border-radius:12px;background:rgba(15,22,36,.95);border:1px solid rgba(232,160,69,.3);box-shadow:0 12px 40px rgba(0,0,0,.5);opacity:0;pointer-events:none;transform:translateY(-50%) translateX(8px);transition:opacity .35s,transform .35s}
+    .hero-name-tooltip.show{opacity:1;transform:translateY(-50%) translateX(0);pointer-events:auto}
+    .hero-name-tooltip::before{content:'';position:absolute;top:50%;left:-6px;width:12px;height:12px;background:rgba(15,22,36,.95);border-left:1px solid rgba(232,160,69,.3);border-bottom:1px solid rgba(232,160,69,.3);transform:translateY(-50%) rotate(45deg)}
+    .hero-name-tooltip h4{font-size:.9rem;font-weight:700;color:var(--accent);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+    .hero-name-tooltip h4::before{content:'';width:3px;height:14px;background:var(--accent);border-radius:2px}
+    .hero-name-tooltip p{font-size:.8rem;color:var(--text-sub);line-height:1.8;margin-bottom:6px}
+    @media(max-width:1100px){
+      .hero-chips{display:none}
+      .skills-grid{grid-template-columns:repeat(2,1fr)}
+      .posters-grid{grid-template-columns:repeat(3,1fr)}
+    }
+    @media(max-width:960px){
+      .about-grid{grid-template-columns:1fr}
+      .posters-grid{grid-template-columns:repeat(3,1fr)}
+    }
+    @media(max-width:700px){
+      .skills-grid{grid-template-columns:1fr}
+      .posters-grid{grid-template-columns:repeat(2,1fr)}
+      .stat-divider{display:none}
+      .hero-stats{gap:20px 28px}
+    }
+    @media(max-width:600px){
+      .hero-stats{gap:20px 24px}
+      .nav-links{display:none}
+      .about-img-wrap{max-height:320px}
+      .posters-grid{grid-template-columns:repeat(2,1fr);gap:12px}
+      /* Tooltip: 手机端显示在名字正下方，箭头朝上 */
+      .hero-name-tooltip{
+        left:50%;
+        top:calc(100% + 12px);
+        transform:translateX(-50%) translateY(-8px);
+        width:92vw;
+        max-width:320px;
+        text-align:left
+      }
+      .hero-name-tooltip.show{
+        transform:translateX(-50%) translateY(0)
+      }
+      .hero-name-tooltip::before{
+        top:-6px;
+        left:50%;
+        transform:translateX(-50%) rotate(45deg);
+        border-left:1px solid rgba(232,160,69,.3);
+        border-top:1px solid rgba(232,160,69,.3);
+        background:rgba(15,22,36,.95)
+      }
+      /* Hero 内容手机端优化 */
+      .hero-content{padding-top:100px;max-width:100%}
+      .hero-desc{font-size:.88rem}
+      /* 作品网格手机端 */
+      .posters-grid{gap:10px}
+      .poster-info{padding:10px 12px 12px}
+      .poster-title{font-size:.78rem}
+      /* 联系卡片手机端 */
+      .contact-cards{flex-direction:column;align-items:center}
+    }
+  </style>
+<body>
+
+<!-- ── Nav ── -->
+<nav>
+  <div class="nav-logo">李林 · LL</div>
+  <div class="nav-links">
+    <a href="#about">关于</a>
+    <a href="#skills">技能</a>
+    <a href="#experience">经历</a>
+    <a href="#works">作品</a>
+    <a href="#contact">联系</a>
+  </div>
+</nav>
+
+<!-- ── Hero ── -->
+<section id="hero">
+  <div class="hero-bg"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge"><span class="dot"></span>Available · 寻求制片人 / 后期总监机会</div>
+    <h1 class="hero-name" id="hero-name"><span>李&nbsp;林</span>
+      <div class="hero-name-tooltip" id="hero-name-tooltip">
+        <h4>关于我</h4>
+        <p>已婚，有一个小孩。身高 <strong>180cm</strong>，体重 <strong>82kg</strong>，微胖。</p>
+        <p>爱好：唱歌、画画、旅游、看电影。</p>
+        <p>性格不算很开朗也不会很沉默，工作时专注起来会比较严肃。</p>
+      </div>
+    </h1>
+    <p class="hero-title">影视制片人 · 短剧制片组长 · 后期总监</p>
+    <p class="hero-desc">10年影视经验，主导100+部男频短剧全流程制作。精通AI短剧与真人剧制片，多部作品创下千万级消耗与数亿播放记录。</p>
+
+    <div class="hero-stats">
+      <div class="stat-item"><span class="stat-num">10+</span><span class="stat-label">年影视经验</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat-item"><span class="stat-num">100+</span><span class="stat-label">短剧作品</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-num" style="font-size:1.6rem;display:flex;align-items:baseline;gap:2px">
+          <span style="font-size:2rem">千万</span><span style="font-size:.9rem;font-weight:700;color:var(--accent2)">+</span>
+        </span>
+        <span class="stat-label">多部短剧消耗量级</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item"><span class="stat-num">亿+</span><span class="stat-label">单剧播放量</span></div>
+    </div>
+
+    <!-- Team photo mini card -->
+    <div class="hero-team-card reveal visible" onclick="openLightbox('team.jpg','优秀团队奖 · 快创网络')">
+      <img src="./images/team.jpg" alt="优秀团队奖" class="hero-team-img">
+      <div class="hero-team-text">
+        <strong>优秀团队奖 · 快创网络</strong>
+        <span>带领后期制片团队屡创佳绩，获公司年度优秀团队荣誉</span>
+      </div>
+    </div>
+
+    <div class="hero-cta">
+      <a href="#contact" class="btn-primary">联系我</a>
+      <a href="#works" class="btn-outline">查看作品</a>
+    </div>
+  </div>
+
+  <!-- Hero chips: 短剧 ↔ 制片统筹 swapped -->
+  <div class="hero-chips">
+    <div class="chip">
+      <span class="chip-icon">👥</span>
+      <div class="chip-text">
+        <strong>团队管理</strong>
+        <span>管理制片团队及后期团队</span>
+      </div>
+    </div>
+    <div class="chip">
+      <span class="chip-icon">📋</span>
+      <div class="chip-text">
+        <strong>制片统筹</strong>
+        <span>全流程项目管理</span>
+      </div>
+    </div>
+    <div class="chip">
+      <span class="chip-icon">🎬</span>
+      <div class="chip-text">
+        <strong>短剧</strong>
+        <span>真人剧 / AI真人剧 / AI漫剧</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-down"><div class="scroll-arrow"></div>Scroll</div>
+</section>
+
+<!-- ── About ── -->
+<section id="about">
+  <div class="section-label">About Me</div>
+  <div class="about-grid">
+
+    <div class="about-img-wrap reveal" onclick="openLightbox('photo.jpg','李林')">
+      <img src="./images/photo.jpg" alt="李林">
+      <div class="frame-corner tl"></div>
+      <div class="frame-corner tr"></div>
+      <div class="frame-corner bl"></div>
+      <div class="frame-corner br"></div>
+    </div>
+
+    <div class="about-text">
+      <div class="section-title reveal">关于我</div>
+      <div class="divider reveal reveal-delay-1"></div>
+      <p class="reveal reveal-delay-1">
+        男，31岁，广州。从后期剪辑师起步，历经摄影师、后期主管、联合创始人等多岗位历练，逐步成长为能够统筹全流程的资深影视制片人。
+      </p>
+      <p class="reveal reveal-delay-2">
+        广州快创网络科技有限公司（映宇宙集团旗下）<strong style="color:var(--text-main)">男频制片组长</strong>，深耕影视行业10年，专注竖屏短剧赛道——真人剧、AI真人剧、AI漫剧三大类型全链路覆盖。主导<strong style="color:var(--text-main)">100+部男频短剧</strong>的全链路制片：剧本评估 → 前期筹备（道服化、场景、演员筛选）→ AI/特效/后期/海报多团队质控 → 审核成片 → 运营上线。对短剧的节奏把控、镜头逻辑、音乐情绪、调色风格、卡点收尾处理有深度理解，多部作品实现千万级消耗、数亿级播放，沉淀出一套可复用的爆款方法论。
+      </p>
+      <p class="reveal reveal-delay-3">
+        具备丰富的<strong style="color:var(--text-main)">后期团队管理及带教经验</strong>，擅长在多项目并行的高压环境下合理调配资源、把控节点、确保交付。对市场热点与用户需求保持敏锐嗅觉，能在艺术表达与商业变现之间找到最佳平衡点，持续为团队输出高ROI的内容策略与执行标准。
+      </p>
+      <div class="tag-list reveal">
+        <span class="tag">全流程制片</span>
+        <span class="tag">质量把控</span>
+        <span class="tag">团队管理</span>
+        <span class="tag cyan">AI短剧</span>
+        <span class="tag cyan">真人剧</span>
+        <span class="tag purple">爆款方法论</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Skills ── -->
+<section id="skills">
+  <div class="section-label">Skills</div>
+  <div class="section-title reveal">专业技能</div>
+  <div class="divider"></div>
+
+  <div class="skills-grid">
+
+    <!-- 1 团队管理 -->
+    <div class="skill-card reveal">
+      <div class="skill-card-icon">👥</div>
+      <h4>团队管理</h4>
+      <p>丰富后期团队管理及带教经验，协调多条线并行，确保项目按时高质量交付。</p>
+      <div class="skill-bar-wrap">
+        <div class="skill-bar-label"><span>团队带教</span><span>90%</span></div>
+        <div class="skill-bar"><div class="skill-bar-fill" style="width:90%"></div></div>
+      </div>
+      <div class="skill-bar-wrap">
+        <div class="skill-bar-label"><span>多线任务协调</span><span>92%</span></div>
+        <div class="skill-bar"><div class="skill-bar-fill" style="width:92%"></div></div>
+      </div>
+    </div>
+
+    <!-- 2 制片统筹 -->
+    <div class="skill-card reveal reveal-delay-1">
+      <div class="skill-card-icon">🎬</div>
+      <h4>制片统筹</h4>
+      <p>从剧本评估到成片上线的全链路管控，精准协调多团队并行推进。</p>
+      <div class="skill-bar-wrap">
+        <div class="skill-bar-label"><span>项目管理</span><span>95%</span></div>
+        <div class="skill-bar"><div class="skill-bar-fill" style="width:95%"></div></div>
+      </div>
+      <div class="skill-bar-wrap">
+        <div class="skill-bar-label"><span>质量把控</span><span>97%</span></div>
+        <div class="skill-bar"><div class="skill-bar-fill" style="width:97%"></div></div>
+      </div>
+    </div>
+
+    <!-- 3 后期制作 -->
+    <div class="skill-card reveal reveal-delay-2">
+      <div class="skill-card-icon">✂️</div>
+      <h4>后期制作</h4>
+      <p>精通主流后期软件，深度掌握剧情节奏、镜头逻辑、调色风格与声音处理。</p>
+      <div class="skill-bar-wrap">
+        <div class="skill-bar-label"><span>剪映 / Premiere</span><span>98%</span></div>
+        <div class="skill-bar"><div class="skill-bar-fill" style="width:98%"></div></div>
+      </div>
+      <div class="skill-bar-wrap">
+        <div class="skill-bar-label"><span>DaVinci Resolve</span><span>92%</span></div>
+        <div class="skill-bar"><div class="skill-bar-fill" style="width:92%"></div></div>
+      </div>
+      <div class="skill-bar-wrap">
+        <div class="skill-bar-label"><span>AE / AU</span><span>85%</span></div>
+        <div class="skill-bar"><div class="skill-bar-fill" style="width:85%"></div></div>
+      </div>
+    </div>
+
+    <!-- 4 AI工具应用 -->
+    <div class="skill-card reveal reveal-delay-3">
+      <div class="skill-card-icon">🤖</div>
+      <h4>AI工具应用<span class="skill-tag">学习中</span></h4>
+      <p>熟练运用主流AI创作工具，覆盖视频生成、图像合成、音频处理等全链路提效，持续提升工作效率。</p>
+      <div class="skill-bar-wrap">
+        <div class="skill-bar-label"><span>ChatGPT / Claude / WorkBuddy / Coze</span><span>52%</span></div>
+        <div class="skill-bar"><div class="skill-bar-fill" style="width:52%"></div></div>
+      </div>
+      <div class="skill-bar-wrap">
+        <div class="skill-bar-label"><span>Midjourney / 即梦 / 豆包</span><span>66%</span></div>
+        <div class="skill-bar"><div class="skill-bar-fill" style="width:66%"></div></div>
+      </div>
+      <div class="skill-bar-wrap">
+        <div class="skill-bar-label"><span>Sora / Runway</span><span>46%</span></div>
+        <div class="skill-bar"><div class="skill-bar-fill" style="width:46%"></div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── Experience ── -->
+<section id="experience">
+  <div class="section-label">Experience</div>
+  <div class="section-title reveal">工作经历</div>
+  <div class="divider"></div>
+
+  <div class="exp-timeline">
+
+    <div class="exp-item reveal">
+      <div class="exp-dot"></div>
+      <div class="exp-role">男频后期制片组长</div>
+      <div class="exp-header">
+        <div class="exp-company">广州快创网络科技有限公司 · 映宇宙集团<span class="exp-tag current">在职</span></div>
+        <span class="exp-date">2023.11 — 至今</span>
+      </div>
+      <ul class="exp-list">
+        <li>审核公司内部AI剧、真人剧，把控镜头逻辑、画面节奏、声音质量、音乐情绪、卡点处理</li>
+        <li>对接前期团队剧本优化、筹备道服化、场景、配音、演员筛选</li>
+        <li>管理公司内部后期制片组员及后期团队，负责带教与考核</li>
+        <li>把控AI团队、特效团队、后期团队、海报设计团队的出片质量</li>
+        <li>对接运营团队上线工作，合理安排任务确保项目按时交付</li>
+      </ul>
+      <div class="exp-highlight">🔥 主导100+部男频短剧，多部作品千万级消耗</div>
+    </div>
+
+    <div class="exp-item reveal reveal-delay-1">
+      <div class="exp-dot"></div>
+      <div class="exp-role">剪辑师</div>
+      <div class="exp-header">
+        <div class="exp-company">广州千米科技文化有限公司</div>
+        <span class="exp-date">2022.12 — 2023.07</span>
+      </div>
+      <ul class="exp-list">
+        <li>负责 APP《恋爱语音》《欢欢语音》短视频引流制作，每日输出 20+ 条</li>
+      </ul>
+      <div class="exp-highlight">📈 每月为 APP 拉新 8000+ 用户</div>
+    </div>
+
+    <div class="exp-item reveal reveal-delay-2">
+      <div class="exp-dot"></div>
+      <div class="exp-role">联合创始人 · 短视频总监</div>
+      <div class="exp-header">
+        <div class="exp-company">中山得米文化传媒有限公司</div>
+        <span class="exp-date">2021.10 — 2022.09</span>
+      </div>
+      <ul class="exp-list">
+        <li>监督产品短视频拍摄制作与后期制作，配合运营利用短视频千川引流到直播间带货</li>
+      </ul>
+      <div class="exp-highlight">🚀 3个月月销售额破 100W+，单条视频破 70W+ 播放</div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-dot"></div>
+      <div class="exp-role">剪辑师 · 视频摄影</div>
+      <div class="exp-header">
+        <div class="exp-company">广州神狼文化传播有限公司</div>
+        <span class="exp-date">2019.10 — 2021.03</span>
+      </div>
+      <ul class="exp-list">
+        <li>负责头部账号《莫邪》视频摄影剪辑，含现场指导、灯光、场景、后期</li>
+      </ul>
+      <div class="exp-highlight">⭐ 粉丝0→3000W，单条播放破亿，月广告营业额 300W+</div>
+    </div>
+
+    <div class="exp-item reveal reveal-delay-1">
+      <div class="exp-dot"></div>
+      <div class="exp-role">剪辑师 · 后期制作</div>
+      <div class="exp-header">
+        <div class="exp-company">广州太平洋电脑信息咨询有限公司</div>
+        <span class="exp-date">2018.07 — 2019.06</span>
+      </div>
+      <ul class="exp-list">
+        <li>汽车微电影剪辑及后期制作：调色、配音、包装、特效</li>
+      </ul>
+      <div class="exp-highlight">🎥 12部汽车微电影，平均播放量 50W-100W</div>
+    </div>
+
+    <div class="exp-item dim reveal reveal-delay-2">
+      <div class="exp-dot"></div>
+      <div class="exp-role">后期主管</div>
+      <div class="exp-header">
+        <div class="exp-company">广州川上文化传媒有限公司</div>
+        <span class="exp-date">2017.07 — 2018.07</span>
+      </div>
+      <ul class="exp-list">
+        <li>负责《天天逗事》《粤囧先生》《爆小海》等公众号短视频后期主管及带团队</li>
+      </ul>
+      <div class="exp-highlight">📊《天天逗事》全网 1500W 粉丝，每日阅读 100W+</div>
+    </div>
+
+    <div class="exp-item dim reveal">
+      <div class="exp-dot"></div>
+      <div class="exp-role">后期剪辑</div>
+      <div class="exp-header">
+        <div class="exp-company">广州可汼动漫科技有限公司<span class="exp-tag intern">实习</span></div>
+        <span class="exp-date">2016.07 — 2017.06</span>
+      </div>
+      <ul class="exp-list">
+        <li>负责后期剪辑、配音、配乐、包装；《爆小海》平均播放量破100万+</li>
+      </ul>
+    </div>
+
+    <!-- Education -->
+    <div class="exp-item edu reveal reveal-delay-1">
+      <div class="exp-dot"></div>
+      <div class="exp-role">大专 · 影视动画专业</div>
+      <div class="exp-header">
+        <div class="exp-company">广州番禺职业技术学院<span class="exp-tag uni">大学</span></div>
+        <span class="exp-date">2014.9 — 2017.9</span>
+      </div>
+      <ul class="exp-list">
+        <li>系统学习影视制作剧本创作、拍摄、后期剪辑、特效合成、动画制作等专业知识</li>
+      </ul>
+      <div class="exp-highlight">🎓 全日制大学</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── Works ── -->
+<section id="works">
+  <div class="section-label">Portfolio</div>
+  <div class="section-title reveal">爆款作品</div>
+  <div class="divider"></div>
+  <p class="section-sub reveal">以下为代表性短剧作品，均有真实数据支撑，点击海报可放大查看。</p>
+
+  <div class="posters-grid">
+
+    <div class="poster-card reveal" data-img="n1_lihunhou_bamadaiwoshangdianfeng.jpg" data-title="离婚后，爸妈带我走上巅峰">
+      <div class="poster-img-wrap">
+        <img src="./images/n1_lihunhou_bamadaiwoshangdianfeng.jpg" alt="离婚后，爸妈带我走上巅峰">
+      </div>
+      <div class="poster-info">
+        <span class="poster-badge mega">热力榜 Top1</span>
+        <div class="poster-title">离婚后，爸妈带我走上巅峰</div>
+        <div class="poster-stat">累计热力值 <strong>1323.6w</strong> · 快创×绘声绘影</div>
+      </div>
+    </div>
+
+    <div class="poster-card reveal reveal-delay-1" data-img="n2_shanghaitanfengyun.jpg" data-title="上海滩风云">
+      <div class="poster-img-wrap">
+        <img src="./images/n2_shanghaitanfengyun.jpg" alt="上海滩风云">
+      </div>
+      <div class="poster-info">
+        <span class="poster-badge hot">快手热播榜 Top2</span>
+        <div class="poster-title">上海滩风云</div>
+        <div class="poster-stat">总播放量 <strong>4123.1w</strong></div>
+      </div>
+    </div>
+
+    <div class="poster-card reveal reveal-delay-2" data-img="n3_jiuyaoying.jpg" data-title="就是要赢">
+      <div class="poster-img-wrap">
+        <img src="./images/n3_jiuyaoying.jpg" alt="就是要赢">
+      </div>
+      <div class="poster-info">
+        <span class="poster-badge hot">抖音热播榜 Top3</span>
+        <div class="poster-title">就是要赢</div>
+        <div class="poster-stat">总播放量 <strong>1.8亿</strong></div>
+      </div>
+    </div>
+
+    <div class="poster-card reveal" data-img="n4_yanshishengzi.jpg" data-title="艳尸生子">
+      <div class="poster-img-wrap">
+        <img src="./images/n4_yanshishengzi.jpg" alt="艳尸生子">
+      </div>
+      <div class="poster-info">
+        <span class="poster-badge hot">抖音热播榜 Top5</span>
+        <div class="poster-title">艳尸生子</div>
+        <div class="poster-stat">总播放量 <strong>1.3亿</strong></div>
+      </div>
+    </div>
+
+    <div class="poster-card reveal reveal-delay-1" data-img="n5_butingwozhihui.png" data-title="不听我指挥，女机长悔疯了">
+      <div class="poster-img-wrap">
+        <img src="./images/n5_butingwozhihui.png" alt="不听我指挥，女机长悔疯了">
+      </div>
+      <div class="poster-info">
+        <span class="poster-badge hot">抖音热播榜 Top2</span>
+        <div class="poster-title">不听我指挥，女机长悔疯了</div>
+        <div class="poster-stat">总播放量 <strong>3.8亿</strong> · 绘声绘影</div>
+      </div>
+    </div>
+
+    <div class="poster-card reveal reveal-delay-2" data-img="n6_lirenmeigui.png" data-title="利刃玫瑰">
+      <div class="poster-img-wrap">
+        <img src="./images/n6_lirenmeigui.png" alt="利刃玫瑰">
+      </div>
+      <div class="poster-info">
+        <span class="poster-badge mega">热力榜 Top1</span>
+        <div class="poster-title">利刃玫瑰</div>
+        <div class="poster-stat">累计热力值 <strong>2513.2w</strong> · 快创×番茄×绘声绘影</div>
+      </div>
+    </div>
+
+    <div class="poster-card reveal" data-img="n7_lirenmeigui2.png" data-title="利刃玫瑰2">
+      <div class="poster-img-wrap">
+        <img src="./images/n7_lirenmeigui2.png" alt="利刃玫瑰2">
+      </div>
+      <div class="poster-info">
+        <span class="poster-badge mega">抖音热播榜 Top1</span>
+        <div class="poster-title">利刃玫瑰2</div>
+        <div class="poster-stat">总播放量 <strong>3.6亿</strong></div>
+      </div>
+    </div>
+
+    <div class="poster-card reveal reveal-delay-1" data-img="n8_wusanshizhi.jpg" data-title="雾散之时">
+      <div class="poster-img-wrap">
+        <img src="./images/n8_wusanshizhi.jpg" alt="雾散之时">
+      </div>
+      <div class="poster-info">
+        <span class="poster-badge hot">热力榜 Top2</span>
+        <div class="poster-title">雾散之时</div>
+        <div class="poster-stat">累计热力值 <strong>1569.4w</strong> · 快创自制</div>
+      </div>
+    </div>
+
+    <div class="poster-card reveal reveal-delay-2" data-img="n9_sheyuan.jpg" data-title="蛇园">
+      <div class="poster-img-wrap">
+        <img src="./images/n9_sheyuan.jpg" alt="蛇园">
+      </div>
+      <div class="poster-info">
+        <span class="poster-badge mega">热力榜 Top1</span>
+        <div class="poster-title">蛇园</div>
+        <div class="poster-stat">累计热力值 <strong>2853.5w</strong> · 快创×西安等闲</div>
+      </div>
+    </div>
+
+    <div class="poster-card reveal" data-img="n10_tianjiangshengtong.jpg" data-title="天降圣童儿子，谁还要搬砖啊">
+      <div class="poster-img-wrap">
+        <img src="./images/n10_tianjiangshengtong.jpg" alt="天降圣童儿子，谁还要搬砖啊">
+      </div>
+      <div class="poster-info">
+        <span class="poster-badge mega">热力榜 Top1</span>
+        <div class="poster-title">天降圣童儿子，谁还要搬砖啊</div>
+        <div class="poster-stat">累计热力值 <strong>1667.7w</strong> · 快创×爆量传媒</div>
+      </div>
+    </div>
+
+  </div>
+
+  <button class="works-expand-btn" id="works-expand-btn" onclick="toggleWorksExpand()">
+    <span>展开作品列表</span>
+    <span class="expand-icon">▼</span>
+  </button>
+
+  <div class="posters-grid works-expanded" id="works-grid-expanded" style="display:none">
+
+    <div class="poster-card" data-img="w1_lirenchuqiao.png" data-title="利刃出鞘">
+      <div class="poster-img-wrap">
+        <img src="./images/w1_lirenchuqiao.png" alt="利刃出鞘">
+      </div>
+      <div class="poster-info">
+        <span class="poster-badge hot">热力榜 Top2</span>
+        <div class="poster-title">利刃出鞘</div>
+        <div class="poster-stat">累计热力值 <strong>1905.6w</strong> · 快创×西安等闲</div>
+      </div>
+    </div>
+
+    <div class="poster-card" data-img="w2_qiangweizhiren.png" data-title="蔷薇之刃">
+      <div class="poster-img-wrap">
+        <img src="./images/w2_qiangweizhiren.png" alt="蔷薇之刃">
+      </div>
+      <div class="poster-info">
+        <span class="poster-badge hot">热力榜 Top2</span>
+        <div class="poster-title">蔷薇之刃</div>
+        <div class="poster-stat">累计热力值 <strong>1317.6w</strong> · 快创×番茄</div>
+      </div>
+    </div>
+
+    <div class="poster-card" data-img="w3_fanpan.jpg" data-title="翻盘">
+      <div class="poster-img-wrap">
+        <img src="./images/w3_fanpan.jpg" alt="翻盘">
+      </div>
+      <div class="poster-info">
+        <span class="poster-badge hot">热力榜 Top4</span>
+        <div class="poster-title">翻盘</div>
+        <div class="poster-stat">累计热力值 <strong>460.9w</strong> · 快创×绘声绘影</div>
+      </div>
+    </div>
+
+    <div class="poster-card" data-img="w4_yangzibujiao.png" data-title="养子不教，他被全球通缉你哭什么">
+      <div class="poster-img-wrap">
+        <img src="./images/w4_yangzibujiao.png" alt="养子不教，他被全球通缉你哭什么">
+      </div>
+      <div class="poster-info">
+        <span class="poster-badge hot">热力榜 Top4</span>
+        <div class="poster-title">养子不教，他被全球通缉你哭什么</div>
+        <div class="poster-stat">累计热力值 <strong>820w</strong> · 快创×西安等闲</div>
+      </div>
+    </div>
+
+    <div class="poster-card" data-img="w5_zhongjiangshiyi.png" data-title="中奖十亿，六十岁我重获新生">
+      <div class="poster-img-wrap">
+        <img src="./images/w5_zhongjiangshiyi.png" alt="中奖十亿，六十岁我重获新生">
+      </div>
+      <div class="poster-info">
+        <span class="poster-badge hot">TOP2</span>
+        <div class="poster-title">中奖十亿，六十岁我重获新生</div>
+        <div class="poster-stat">累计热力值 <strong>487.9w</strong> · 快创×西安等闲</div>
+      </div>
+    </div>
+
+    <div class="poster-card" data-img="w6_bamahuiguo.png" data-title="爸妈回国后，我走上巅峰">
+      <div class="poster-img-wrap">
+        <img src="./images/w6_bamahuiguo.png" alt="爸妈回国后，我走上巅峰">
+      </div>
+      <div class="poster-info">
+        <span class="poster-badge hot">热力榜 Top4</span>
+        <div class="poster-title">爸妈回国后，我走上巅峰</div>
+        <div class="poster-stat">累计热力值 <strong>586.1w</strong> · 快创×爆量传媒</div>
+      </div>
+    </div>
+
+    <div class="poster-card" data-img="w7_jianbaowushuang.png" data-title="鉴宝无双">
+      <div class="poster-img-wrap">
+        <img src="./images/w7_jianbaowushuang.png" alt="鉴宝无双">
+      </div>
+      <div class="poster-info">
+        <span class="poster-badge hot">热力榜 Top2</span>
+        <div class="poster-title">鉴宝无双</div>
+        <div class="poster-stat">累计热力值 <strong>714.9w</strong> · 快创×爆量传媒</div>
+      </div>
+    </div>
+
+    <div class="poster-card" data-img="w8_tianjiangbamashidalao.png" data-title="天降爸妈是大佬">
+      <div class="poster-img-wrap">
+        <img src="./images/w8_tianjiangbamashidalao.png" alt="天降爸妈是大佬">
+      </div>
+      <div class="poster-info">
+        <span class="poster-badge hot">TOP3</span>
+        <div class="poster-title">天降爸妈是大佬</div>
+        <div class="poster-stat">累计热力值 <strong>963.4w</strong> · 快创×郑州乐不可吱</div>
+      </div>
+    </div>
+
+    <div class="poster-card" data-img="w9_wojingkaobamayangzhu.jpg" data-title="我竟靠爸妈养猪走上巅峰">
+      <div class="poster-img-wrap">
+        <img src="./images/w9_wojingkaobamayangzhu.jpg" alt="我竟靠爸妈养猪走上巅峰">
+      </div>
+      <div class="poster-info">
+        <span class="poster-badge hot">TOP6</span>
+        <div class="poster-title">我竟靠爸妈养猪走上巅峰</div>
+        <div class="poster-stat">累计热力值 <strong>388.1w</strong> · 快创×浙江爆量传媒</div>
+      </div>
+    </div>
+
+    <div class="poster-card" data-img="w10_lihunhou.jpg" data-title="离婚后，走上人生巅峰">
+      <div class="poster-img-wrap">
+        <img src="./images/w10_lihunhou.jpg" alt="离婚后，走上人生巅峰">
+      </div>
+      <div class="poster-info">
+        <span class="poster-badge hot">TOP5</span>
+        <div class="poster-title">离婚后，走上人生巅峰</div>
+        <div class="poster-stat">累计热力值 <strong>507w</strong> · 快创×爆量传媒</div>
+      </div>
+    </div>
+
+    <div class="poster-card" data-img="w11_quanqiumori.jpg" data-title="全球末日：我成了救世主">
+      <div class="poster-img-wrap">
+        <img src="./images/w11_quanqiumori.jpg" alt="全球末日：我成了救世主">
+      </div>
+      <div class="poster-info">
+        <span class="poster-badge hot">TOP4</span>
+        <div class="poster-title">全球末日：我成了救世主</div>
+        <div class="poster-stat">累计热力值 <strong>1259.1w</strong> · 快创×爆量影视</div>
+      </div>
+    </div>
+
+    <div class="poster-card" data-img="w12_wenroudelieyan.png" data-title="温柔的谎言">
+      <div class="poster-img-wrap">
+        <img src="./images/w12_wenroudelieyan.png" alt="温柔的谎言">
+      </div>
+      <div class="poster-info">
+        <span class="poster-badge hot">热力榜 Top5</span>
+        <div class="poster-title">温柔的谎言</div>
+        <div class="poster-stat">累计热力值 <strong>690.3w</strong> · 快创×郑州乐不可吱</div>
+      </div>
+    </div>
+
+    <div class="poster-card" data-img="w13_huidaogudai.jpg" data-title="回到古代召唤群雄">
+      <div class="poster-img-wrap">
+        <img src="./images/w13_huidaogudai.jpg" alt="回到古代召唤群雄">
+      </div>
+      <div class="poster-info">
+        <span class="poster-badge hot">TOP5</span>
+        <div class="poster-title">回到古代召唤群雄</div>
+        <div class="poster-stat">累计热力值 <strong>668.6w</strong> · 快创×爆量传媒</div>
+      </div>
+    </div>
+
+    <div class="poster-card" data-img="w14_wozhenbushishoufu.jpg" data-title="我真不是首富继承人">
+      <div class="poster-img-wrap">
+        <img src="./images/w14_wozhenbushishoufu.jpg" alt="我真不是首富继承人">
+      </div>
+      <div class="poster-info">
+        <span class="poster-badge mega">TOP1</span>
+        <div class="poster-title">我真不是首富继承人</div>
+        <div class="poster-stat">累计热力值 <strong>4103.5w</strong> · 快创×郑州乐不可吱</div>
+      </div>
+    </div>
+
+    <div class="poster-card" data-img="w15_anmingshenzi.jpg" data-title="暗冥神子">
+      <div class="poster-img-wrap">
+        <img src="./images/w15_anmingshenzi.jpg" alt="暗冥神子">
+      </div>
+      <div class="poster-info">
+        <span class="poster-badge hot">TOP2</span>
+        <div class="poster-title">暗冥神子</div>
+        <div class="poster-stat">累计热力值 <strong>1439.5w</strong> · 快创×爆量影视</div>
+      </div>
+    </div>
+
+    <div class="poster-card" data-img="w16_daojishi.jpg" data-title="倒计时">
+      <div class="poster-img-wrap">
+        <img src="./images/w16_daojishi.jpg" alt="倒计时">
+      </div>
+      <div class="poster-info">
+        <span class="poster-badge mega">热力榜 Top1</span>
+        <div class="poster-title">倒计时</div>
+        <div class="poster-stat">累计热力值 <strong>4470.3w</strong> · 快创×郑州乐不可吱</div>
+      </div>
+    </div>
+
+    <div class="poster-card" data-img="w17_yinlang.jpg" data-title="隐狼">
+      <div class="poster-img-wrap">
+        <img src="./images/w17_yinlang.jpg" alt="隐狼">
+      </div>
+      <div class="poster-info">
+        <span class="poster-badge hot">热力榜 Top6</span>
+        <div class="poster-title">隐狼</div>
+        <div class="poster-stat">累计热力值 <strong>805.4w</strong> · 快创×西安乐推</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── Contact ── -->
+<section id="contact">
+  <div class="contact-wrap">
+    <div class="section-label" style="text-align:center">Contact</div>
+    <div class="section-title reveal" style="text-align:center">联系方式</div>
+    <div class="divider" style="margin:0 auto 44px"></div>
+
+    <div class="contact-cards reveal">
+      <div class="contact-card" onclick="openLightbox('qrcode.jpg','微信二维码')">
+        <span class="contact-card-icon">💬</span>
+        <div class="contact-card-text">
+          <div class="contact-card-label">微信 / 手机</div>
+          <div class="contact-card-val">13535411025</div>
+        </div>
+      </div>
+      <div class="contact-card" onclick="openLightbox('qqrcode.jpg','QQ二维码')">
+        <span class="contact-card-icon">📧</span>
+        <div class="contact-card-text">
+          <div class="contact-card-label">邮箱 / QQ</div>
+          <div class="contact-card-val">378698620@qq.com</div>
+        </div>
+      </div>
+      <div class="contact-card">
+        <span class="contact-card-icon">📍</span>
+        <div class="contact-card-text">
+          <div class="contact-card-label">期望城市</div>
+          <div class="contact-card-val">广州</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-cta-wrap reveal reveal-delay-1">
+      <h3>期望职位：制片人 / 后期总监</h3>
+      <p>期望薪资 20-25K，欢迎有优质项目的团队探讨合作</p>
+      <a href="mailto:378698620@qq.com" class="btn-primary">发送邮件</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 <span>李林</span> · 影视制片人 / 后期总监 · 广州 · 用10年经验打造爆款短剧</p>
+</footer>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" onclick="closeLightbox()">×</button>
+  <img src="" alt="" class="lightbox-img" id="lightbox-img">
+  <div class="lightbox-caption" id="lightbox-caption"></div>
+</div>
+
+<script>
+  // Error catcher — shows errors on page (helpful for mobile debugging)
+  window.addEventListener('error', function(e) {
+    var msg = 'JS Error: ' + (e.message||'unknown') + ' [' + (e.lineno||'?') + ']';
+    var d = document.createElement('div');
+    d.style.cssText = 'position:fixed;top:0;left:0;right:0;background:#c00;color:#fff;padding:8px 12px;z-index:99999;font-size:13px;line-height:1.4';
+    d.textContent = msg;
+    document.body.appendChild(d);
+  });
+
+  // Reveal animation
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Skill bars animation
+  const barObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
+          const w = bar.style.width; bar.style.width = '0%';
+          setTimeout(() => { bar.style.width = w; }, 100);
+        });
+        barObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.skill-card').forEach(c => barObserver.observe(c));
+
+  // Nav highlight
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const secObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting)
+        navLinks.forEach(a => { a.style.color = a.getAttribute('href') === '#' + e.target.id ? 'var(--accent)' : ''; });
+    });
+  }, { threshold: 0.4 });
+  document.querySelectorAll('section[id]').forEach(s => secObserver.observe(s));
+
+  // Lightbox
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxCaption = document.getElementById('lightbox-caption');
+
+  function openLightbox(img, title) {
+    lightboxImg.src = img;
+    lightboxImg.alt = title || '';
+    lightboxCaption.textContent = title || '';
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.poster-card').forEach(card => {
+    card.addEventListener('click', () => {
+      openLightbox(card.getAttribute('data-img'), card.getAttribute('data-title'));
+    });
+  });
+
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox || e.target.classList.contains('lightbox-close')) {
+      closeLightbox();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+
+  // Works expand / collapse
+  function toggleWorksExpand() {
+    const grid = document.getElementById('works-grid-expanded');
+    const btn = document.getElementById('works-expand-btn');
+    const isHidden = grid.style.display === 'none' || !grid.classList.contains('active');
+    if (isHidden) {
+      grid.style.display = 'grid';
+      setTimeout(() => grid.classList.add('active'), 10);
+      btn.querySelector('span:first-child').textContent = '收起作品列表';
+      btn.classList.add('expanded');
+    } else {
+      grid.classList.remove('active');
+      setTimeout(() => grid.style.display = 'none', 400);
+      btn.querySelector('span:first-child').textContent = '展开作品列表';
+      btn.classList.remove('expanded');
+    }
+  }
+
+  // Hero name tooltip (hover 0.5s delay + mobile tap support)
+  (function() {
+    const heroName = document.getElementById('hero-name');
+    const tooltip = document.getElementById('hero-name-tooltip');
+    if (!heroName || !tooltip) return;
+    let timer = null;
+    let isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
+
+    function showTip() { tooltip.classList.add('show'); }
+    function hideTip() { tooltip.classList.remove('show'); }
+
+    if (!isMobile) {
+      // Desktop: hover
+      heroName.addEventListener('mouseenter', () => {
+        timer = setTimeout(showTip, 500);
+      });
+      heroName.addEventListener('mouseleave', () => {
+        if (timer) { clearTimeout(timer); timer = null; }
+        hideTip();
+      });
+      tooltip.addEventListener('mouseenter', showTip);
+      tooltip.addEventListener('mouseleave', hideTip);
+    } else {
+      // Mobile: tap to toggle
+      heroName.addEventListener('click', (e) => {
+        e.stopPropagation();
+        tooltip.classList.toggle('show');
+      });
+      // tap outside to close
+      document.addEventListener('click', (e) => {
+        if (!heroName.contains(e.target)) hideTip();
+      });
+    }
+  })();
+</script>
+
+
+<div>
+        <div id="edgeone-watermark" style="position: fixed; bottom: 0; left: 0; width: 100%; z-index: 9999; display: flex; justify-content: center; align-items: flex-end; padding: 50px 15px 15px 15px; box-sizing: border-box; background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0)); pointer-events: none;">
+          <div style="display: flex; align-items: center; pointer-events: auto;">
+            <span style="font-size: 12px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.5; color: rgba(255, 255, 255, 0.85); text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);">
+              For demonstration and testing purposes only. Please do not enter any sensitive data.
+            </span>
+            <span id="edgeone-watermark-close" style="display: inline-block; width: 12px; height: 12px; margin-left: 8px; cursor: pointer; position: relative;">
+              <svg viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 100%; display: block;" aria-label="close">
+                <line x1="2" y1="10" x2="10" y2="2" stroke="rgba(255, 255, 255, 0.85)" stroke-width="2" stroke-linecap="round"></line>
+                <line x1="2" y1="2" x2="10" y2="10" stroke="rgba(255, 255, 255, 0.85)" stroke-width="2" stroke-linecap="round"></line>
+              </svg>
+            </span>
+          </div>
+        </div>
+      </div></body></html>
